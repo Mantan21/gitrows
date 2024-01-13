@@ -424,7 +424,7 @@ module.exports=class Gitrows{
 					return YAML.stringify(obj,10);
 					break;
 				default:
-					return JSON.stringify(obj,null,2);
+					return JSON.stringify(obj);
 			}
 		} catch (e) {
 			return null;
