@@ -424,7 +424,10 @@ module.exports=class Gitrows{
 					return YAML.stringify(obj,10);
 					break;
 				default:
-					return JSON.stringify(obj);
+					if (!Array.isArray(obj)) return JSON.stringify(obj);
+					const strArray = obj.map((item) => JSON.stringify(item));
+					const str = `[${strArray.join(',\n')}]`;
+					return str;
 			}
 		} catch (e) {
 			return null;
